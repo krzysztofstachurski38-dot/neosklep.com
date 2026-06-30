@@ -3,239 +3,249 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Aurora Command Center 🌌</title>
+<title>Aurora Hunter AI</title>
 
 <style>
+*{box-sizing:border-box}
 
 body{
 margin:0;
-font-family:Arial;
-background:#020617;
+font-family:system-ui;
+background:#01030f;
 color:white;
-overflow-x:hidden;
 }
 
-canvas{
+.bg{
 position:fixed;
-top:0;
-left:0;
+inset:0;
+background:
+radial-gradient(circle at 50% 30%,#123b5c,transparent 35%),
+linear-gradient(#020617,#000);
 z-index:-1;
 }
 
 
 header{
+padding:40px;
 text-align:center;
-padding:70px 20px;
-background:linear-gradient(#0008,#020617);
 }
-
 
 h1{
 font-size:55px;
-color:#7ffcff;
+color:#6fffe9;
 text-shadow:0 0 30px cyan;
 }
 
 
-.subtitle{
-font-size:22px;
-}
-
-
-.container{
+.panel{
 max-width:1200px;
 margin:auto;
-padding:30px;
-}
-
-
-.grid{
-
+padding:20px;
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+grid-template-columns:2fr 1fr;
 gap:25px;
-
 }
 
 
-.card{
-
-background:#0f172a;
-padding:25px;
+.box{
+background:#071326cc;
+border:1px solid #1de9ff55;
 border-radius:25px;
-box-shadow:0 0 30px #00ffff22;
-
+padding:25px;
+backdrop-filter:blur(10px);
 }
-
-
-.card h2{
-
-color:#7ffcff;
-
-}
-
 
 
 .radar{
-
-width:280px;
-height:280px;
+width:320px;
+height:320px;
 border-radius:50%;
 margin:auto;
-
 background:
-radial-gradient(circle,
-transparent 20%,
-#00ffff22 21%,
-transparent 22%,
-#00ffff22 40%,
-transparent 41%,
-#00ffff22 60%,
-transparent 61%);
-
-border:3px solid cyan;
-
+repeating-radial-gradient(
+circle,
+transparent 0 35px,
+#00ffff55 36px
+);
+border:3px solid #00ffff;
 position:relative;
-
 overflow:hidden;
-
 }
 
 
 .radar:after{
-
 content:"";
-
 position:absolute;
-
-width:50%;
-height:50%;
-
-background:linear-gradient(45deg,transparent,#00ffcc);
-
-animation:scan 2s infinite;
-
-transform-origin:100% 100%;
-
+width:160px;
+height:3px;
+background:#00ff99;
+top:50%;
+left:50%;
+transform-origin:left;
+animation:scan 3s linear infinite;
 }
 
 
 @keyframes scan{
-
-to{
-transform:rotate(360deg);
-}
-
+to{transform:rotate(360deg)}
 }
 
 
-
-.aurora{
-
-height:150px;
-
-background:linear-gradient(
-90deg,
-#00ff99,
-#8b5cf6,
-#00eaff,
-#00ff99
-);
-
-filter:blur(25px);
-
-animation:move 5s infinite alternate;
-
+.number{
+font-size:50px;
+color:#00ff99;
 }
 
 
-
-@keyframes move{
-
-from{
-transform:translateX(-50px);
-}
-
-to{
-transform:translateX(50px);
-}
-
-}
-
-
-button,a{
-
-background:#00eaff;
-color:black;
-padding:15px 25px;
-border-radius:30px;
-text-decoration:none;
-border:0;
-font-weight:bold;
-
+.earth{
+width:250px;
+height:250px;
+border-radius:50%;
+margin:auto;
+background:
+url("https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg");
+background-size:cover;
+animation:spin 20s linear infinite;
+box-shadow:0 0 60px #00ffff;
 }
 
 
-.progress{
-
-height:25px;
-background:#111;
-border-radius:20px;
-overflow:hidden;
-
+@keyframes spin{
+to{transform:rotate(360deg)}
 }
 
 
 .bar{
-
-height:100%;
-width:75%;
-background:#00ff99;
-
+height:20px;
+background:#111;
+border-radius:20px;
+overflow:hidden;
 }
 
+.fill{
+height:100%;
+width:78%;
+background:linear-gradient(90deg,#00ff99,#00ffff);
+}
+
+
+button{
+padding:15px 30px;
+border-radius:30px;
+border:0;
+background:#00ffff;
+font-weight:bold;
+}
 
 
 footer{
-
-padding:30px;
 text-align:center;
-
+padding:30px;
 }
-
 
 </style>
 
 </head>
 
-
 <body>
 
-
-<canvas id="stars"></canvas>
-
+<div class="bg"></div>
 
 <header>
-
-<h1>🌌 AURORA COMMAND CENTER</h1>
-
-<p class="subtitle">
-Centrum zorzy polarnej, Słońca i Wszechświata
-</p>
-
-<br>
-
-<a href="https://www.swpc.noaa.gov/" target="_blank">
-☀️ Dane kosmiczne
-</a>
-
-
+<h1>🌌 AURORA HUNTER AI</h1>
+<p>Centrum obserwacji zorzy polarnej i kosmosu</p>
 </header>
 
 
+<div class="panel">
 
-<div class="container">
+
+<div class="box">
+
+<h2>🌈 Radar zorzy polarnej</h2>
+
+<div class="radar"></div>
+
+<h2 style="text-align:center">
+Szansa na zorzę:
+<span class="number">78%</span>
+</h2>
+
+<button onclick="alert('Sprawdzanie aktywności Słońca...')">
+SPRAWDŹ TERAZ
+</button>
+
+</div>
 
 
-<div class="grid">
+
+<div>
+
+<div class="box">
+
+<h2>☀️ Słońce</h2>
+
+<p>Wiatr słoneczny</p>
+
+<div class="bar">
+<div class="fill"></div>
+</div>
+
+<p>Kp indeks: 6 (burza geomagnetyczna)</p>
+
+</div>
+
+
+
+<div class="box">
+
+<h2>🌍 Ziemia</h2>
+
+<div class="earth"></div>
+
+</div>
+
+
+</div>
+
+
+<div class="box">
+
+<h2>🤖 Aurora AI</h2>
+
+<p>
+Analiza:
+<br><br>
+"Dzisiaj najlepsze szanse obserwacji na północy Polski.
+Najlepszy czas: 22:30 - 01:00.
+Unikaj świateł miasta."
+</p>
+
+</div>
+
+
+
+<div class="box">
+
+<h2>💰 Centrum zarabiania</h2>
+
+<p>
+• afiliacja teleskopów<br>
+• sprzedaż poradników fotografii zorzy<br>
+• reklamy astronomiczne<br>
+• płatne powiadomienia o zorzach
+</p>
+
+</div>
+
+
+</div>
+
+
+<footer>
+🌌 Aurora Hunter 2026
+</footer>
+
+
+</body>
+</html>
