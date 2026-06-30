@@ -4,116 +4,56 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Aurora Universe 🌌 | Kosmos i Zorza Polarna</title>
+<title>Aurora Command Center 🌌</title>
 
 <style>
 
-*{
-box-sizing:border-box;
-}
-
 body{
 margin:0;
-font-family:Arial,Helvetica,sans-serif;
+font-family:Arial;
 background:#020617;
 color:white;
 overflow-x:hidden;
 }
 
-
-.stars{
+canvas{
 position:fixed;
-width:100%;
-height:100%;
-background:
-radial-gradient(white 1px,transparent 1px);
-background-size:40px 40px;
-opacity:.15;
+top:0;
+left:0;
 z-index:-1;
 }
 
 
 header{
-
-height:90vh;
-display:flex;
-align-items:center;
-justify-content:center;
 text-align:center;
-
-background:
-linear-gradient(
-rgba(0,0,0,.4),
-rgba(2,6,23,.9)
-),
-url("https://images.unsplash.com/photo-1462331940025-496dfbfc7564");
-
-background-size:cover;
-background-position:center;
-
+padding:70px 20px;
+background:linear-gradient(#0008,#020617);
 }
 
 
 h1{
-font-size:60px;
-margin:0;
-text-shadow:0 0 30px #00eaff;
+font-size:55px;
+color:#7ffcff;
+text-shadow:0 0 30px cyan;
 }
 
 
-header p{
+.subtitle{
 font-size:22px;
 }
 
 
-.btn{
-
-display:inline-block;
-margin-top:25px;
-padding:15px 35px;
-
-background:#00eaff;
-color:#001;
-
-border-radius:40px;
-font-weight:bold;
-
-text-decoration:none;
-
-transition:.3s;
-
-}
-
-.btn:hover{
-
-transform:scale(1.1);
-box-shadow:0 0 30px #00eaff;
-
-}
-
-
-section{
-
-max-width:1100px;
+.container{
+max-width:1200px;
 margin:auto;
-padding:50px 20px;
-
+padding:30px;
 }
 
 
-.title{
-
-font-size:35px;
-text-align:center;
-margin-bottom:40px;
-
-}
-
-
-.cards{
+.grid{
 
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
 gap:25px;
 
 }
@@ -123,19 +63,69 @@ gap:25px;
 
 background:#0f172a;
 padding:25px;
-
-border-radius:20px;
-
-box-shadow:0 0 25px rgba(0,255,255,.15);
-
-transition:.3s;
+border-radius:25px;
+box-shadow:0 0 30px #00ffff22;
 
 }
 
 
-.card:hover{
+.card h2{
 
-transform:translateY(-10px);
+color:#7ffcff;
+
+}
+
+
+
+.radar{
+
+width:280px;
+height:280px;
+border-radius:50%;
+margin:auto;
+
+background:
+radial-gradient(circle,
+transparent 20%,
+#00ffff22 21%,
+transparent 22%,
+#00ffff22 40%,
+transparent 41%,
+#00ffff22 60%,
+transparent 61%);
+
+border:3px solid cyan;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+
+.radar:after{
+
+content:"";
+
+position:absolute;
+
+width:50%;
+height:50%;
+
+background:linear-gradient(45deg,transparent,#00ffcc);
+
+animation:scan 2s infinite;
+
+transform-origin:100% 100%;
+
+}
+
+
+@keyframes scan{
+
+to{
+transform:rotate(360deg);
+}
 
 }
 
@@ -143,21 +133,22 @@ transform:translateY(-10px);
 
 .aurora{
 
-height:250px;
+height:150px;
 
-background:
-linear-gradient(
-120deg,
-#00ffcc,
-#8a2be2,
-#00eaff
+background:linear-gradient(
+90deg,
+#00ff99,
+#8b5cf6,
+#00eaff,
+#00ff99
 );
 
-filter:blur(20px);
+filter:blur(25px);
 
 animation:move 5s infinite alternate;
 
 }
+
 
 
 @keyframes move{
@@ -173,39 +164,43 @@ transform:translateX(50px);
 }
 
 
-.shop{
+button,a{
 
-background:#111827;
-padding:40px;
-border-radius:25px;
-
-}
-
-
-input{
-
-padding:15px;
-border-radius:20px;
-border:none;
-
-}
-
-
-button{
-
-padding:15px 25px;
-border:none;
-border-radius:20px;
 background:#00eaff;
+color:black;
+padding:15px 25px;
+border-radius:30px;
+text-decoration:none;
+border:0;
+font-weight:bold;
 
 }
+
+
+.progress{
+
+height:25px;
+background:#111;
+border-radius:20px;
+overflow:hidden;
+
+}
+
+
+.bar{
+
+height:100%;
+width:75%;
+background:#00ff99;
+
+}
+
 
 
 footer{
 
-text-align:center;
 padding:30px;
-background:#000;
+text-align:center;
 
 }
 
@@ -218,211 +213,29 @@ background:#000;
 <body>
 
 
-<div class="stars"></div>
+<canvas id="stars"></canvas>
 
 
 <header>
 
-<div>
+<h1>🌌 AURORA COMMAND CENTER</h1>
 
-<h1>🌌 AURORA UNIVERSE</h1>
-
-<p>
-Twoje centrum kosmosu, gwiazd i zorzy polarnej
+<p class="subtitle">
+Centrum zorzy polarnej, Słońca i Wszechświata
 </p>
 
+<br>
 
-<a class="btn" 
-href="https://www.spaceweather.com/"
-target="_blank">
-
-Sprawdź aktywność Słońca ☀️
-
+<a href="https://www.swpc.noaa.gov/" target="_blank">
+☀️ Dane kosmiczne
 </a>
 
-
-</div>
 
 </header>
 
 
 
-<section>
+<div class="container">
 
-<h2 class="title">
-🌈 Zorza polarna
-</h2>
 
-
-<div class="aurora"></div>
-
-
-<div class="cards">
-
-
-<div class="card">
-
-<h2>🔥 Czy dziś będzie zorza?</h2>
-
-<p>
-Śledź burze geomagnetyczne i dowiedz się kiedy warto wyjść z aparatem.
-</p>
-
-
-<a class="btn"
-href="https://www.swpc.noaa.gov/"
-target="_blank">
-
-Prognoza zorzy
-
-</a>
-
-
-</div>
-
-
-
-<div class="card">
-
-<h2>📸 Fotografia nocnego nieba</h2>
-
-<p>
-Poradniki: telefon, aparat, ustawienia i najlepsze miejsca.
-</p>
-
-</div>
-
-
-
-
-<div class="card">
-
-<h2>🚀 Kosmiczne ciekawostki</h2>
-
-<p>
-Czarne dziury, planety, NASA, odkrycia i tajemnice Wszechświata.
-</p>
-
-</div>
-
-
-
-</div>
-
-</section>
-
-
-
-
-
-<section>
-
-
-<h2 class="title">
-🔭 Kosmiczny sklep
-</h2>
-
-
-<div class="shop">
-
-
-<p>
-Polecany sprzęt dla początkujących:
-</p>
-
-
-<ul>
-
-<li>Teleskopy</li>
-
-<li>Lornetki astronomiczne</li>
-
-<li>Aparaty do zdjęć nocnych</li>
-
-<li>Książki o kosmosie</li>
-
-</ul>
-
-
-<a class="btn"
-href="#">
-
-Zobacz polecany sprzęt
-
-</a>
-
-
-</div>
-
-
-</section>
-
-
-
-
-<section>
-
-
-<h2 class="title">
-📩 Kosmiczny alert
-</h2>
-
-
-<p>
-Zapisz się i dostawaj informacje o wyjątkowych zorzach.
-</p>
-
-
-<input placeholder="Twój email">
-
-<button>
-Dołącz
-</button>
-
-
-</section>
-
-
-
-
-<section>
-
-
-<h2 class="title">
-💰 Strefa twórcy
-</h2>
-
-
-<div class="card">
-
-<p>
-
-Ta strona może zarabiać przez:
-<br><br>
-
-✔ reklamy<br>
-✔ afiliację sprzętu astronomicznego<br>
-✔ płatne alerty zorzy<br>
-✔ kurs fotografii nocnej<br>
-✔ YouTube
-
-</p>
-
-
-</div>
-
-
-</section>
-
-
-
-<footer>
-
-🌌 Aurora Universe 2026
-
-</footer>
-
-
-</body>
-
-</html>
+<div class="grid">
