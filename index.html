@@ -3,148 +3,426 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zorza Polarna i Kosmos - Astronomia dla każdego</title>
+
+<title>Aurora Universe 🌌 | Kosmos i Zorza Polarna</title>
 
 <style>
-body {
-    margin:0;
-    font-family: Arial, sans-serif;
-    background:#050816;
-    color:white;
+
+*{
+box-sizing:border-box;
 }
 
-header {
-    background:linear-gradient(90deg,#06142e,#152c65);
-    padding:40px;
-    text-align:center;
+body{
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:#020617;
+color:white;
+overflow-x:hidden;
 }
 
-h1 {
-    font-size:40px;
+
+.stars{
+position:fixed;
+width:100%;
+height:100%;
+background:
+radial-gradient(white 1px,transparent 1px);
+background-size:40px 40px;
+opacity:.15;
+z-index:-1;
 }
 
-section {
-    padding:30px;
-    max-width:1000px;
-    margin:auto;
+
+header{
+
+height:90vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+
+background:
+linear-gradient(
+rgba(0,0,0,.4),
+rgba(2,6,23,.9)
+),
+url("https://images.unsplash.com/photo-1462331940025-496dfbfc7564");
+
+background-size:cover;
+background-position:center;
+
 }
 
-.card {
-    background:#101a36;
-    padding:20px;
-    margin:20px 0;
-    border-radius:15px;
+
+h1{
+font-size:60px;
+margin:0;
+text-shadow:0 0 30px #00eaff;
 }
 
-.button {
-    background:#38d9ff;
-    color:black;
-    padding:12px 25px;
-    border-radius:20px;
-    text-decoration:none;
+
+header p{
+font-size:22px;
 }
 
-.ad {
-    background:#222;
-    padding:30px;
-    text-align:center;
-    margin:20px;
+
+.btn{
+
+display:inline-block;
+margin-top:25px;
+padding:15px 35px;
+
+background:#00eaff;
+color:#001;
+
+border-radius:40px;
+font-weight:bold;
+
+text-decoration:none;
+
+transition:.3s;
+
 }
 
-footer {
-    text-align:center;
-    padding:20px;
-    background:#02040b;
+.btn:hover{
+
+transform:scale(1.1);
+box-shadow:0 0 30px #00eaff;
+
 }
+
+
+section{
+
+max-width:1100px;
+margin:auto;
+padding:50px 20px;
+
+}
+
+
+.title{
+
+font-size:35px;
+text-align:center;
+margin-bottom:40px;
+
+}
+
+
+.cards{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+
+}
+
+
+.card{
+
+background:#0f172a;
+padding:25px;
+
+border-radius:20px;
+
+box-shadow:0 0 25px rgba(0,255,255,.15);
+
+transition:.3s;
+
+}
+
+
+.card:hover{
+
+transform:translateY(-10px);
+
+}
+
+
+
+.aurora{
+
+height:250px;
+
+background:
+linear-gradient(
+120deg,
+#00ffcc,
+#8a2be2,
+#00eaff
+);
+
+filter:blur(20px);
+
+animation:move 5s infinite alternate;
+
+}
+
+
+@keyframes move{
+
+from{
+transform:translateX(-50px);
+}
+
+to{
+transform:translateX(50px);
+}
+
+}
+
+
+.shop{
+
+background:#111827;
+padding:40px;
+border-radius:25px;
+
+}
+
+
+input{
+
+padding:15px;
+border-radius:20px;
+border:none;
+
+}
+
+
+button{
+
+padding:15px 25px;
+border:none;
+border-radius:20px;
+background:#00eaff;
+
+}
+
+
+footer{
+
+text-align:center;
+padding:30px;
+background:#000;
+
+}
+
+
 </style>
 
 </head>
 
+
 <body>
 
+
+<div class="stars"></div>
+
+
 <header>
-<h1>🌌 Kosmos i Zorza Polarna</h1>
-<p>Odkrywaj wszechświat, galaktyki i najlepsze miejsca do obserwacji zorzy</p>
+
+<div>
+
+<h1>🌌 AURORA UNIVERSE</h1>
+
+<p>
+Twoje centrum kosmosu, gwiazd i zorzy polarnej
+</p>
+
+
+<a class="btn" 
+href="https://www.spaceweather.com/"
+target="_blank">
+
+Sprawdź aktywność Słońca ☀️
+
+</a>
+
+
+</div>
+
 </header>
+
 
 
 <section>
 
+<h2 class="title">
+🌈 Zorza polarna
+</h2>
+
+
+<div class="aurora"></div>
+
+
+<div class="cards">
+
+
 <div class="card">
-<h2>🌈 Kiedy zobaczyć zorzę polarną?</h2>
+
+<h2>🔥 Czy dziś będzie zorza?</h2>
 
 <p>
-Sprawdzaj aktywność Słońca, burze geomagnetyczne i najlepsze miejsca obserwacji.
+Śledź burze geomagnetyczne i dowiedz się kiedy warto wyjść z aparatem.
 </p>
 
-<a class="button" href="#">
-Sprawdź prognozę zorzy
+
+<a class="btn"
+href="https://www.swpc.noaa.gov/"
+target="_blank">
+
+Prognoza zorzy
+
 </a>
 
+
 </div>
+
 
 
 <div class="card">
 
-<h2>🚀 Najnowsze odkrycia kosmiczne</h2>
+<h2>📸 Fotografia nocnego nieba</h2>
 
 <p>
-Codziennie ciekawostki o planetach, czarnych dziurach i misjach NASA.
+Poradniki: telefon, aparat, ustawienia i najlepsze miejsca.
 </p>
 
 </div>
 
 
+
+
 <div class="card">
 
-<h2>📸 Jak fotografować zorzę?</h2>
+<h2>🚀 Kosmiczne ciekawostki</h2>
 
 <p>
-Poradniki: aparat, telefon, ustawienia i sprzęt dla początkujących.
+Czarne dziury, planety, NASA, odkrycia i tajemnice Wszechświata.
 </p>
 
 </div>
 
 
-<div class="card">
 
-<h2>🔭 Polecany sprzęt</h2>
+</div>
+
+</section>
+
+
+
+
+
+<section>
+
+
+<h2 class="title">
+🔭 Kosmiczny sklep
+</h2>
+
+
+<div class="shop">
+
 
 <p>
-Teleskopy, lornetki, aparaty i akcesoria dla fanów kosmosu.
+Polecany sprzęt dla początkujących:
 </p>
 
-<a class="button" href="#">
-Zobacz polecane produkty
+
+<ul>
+
+<li>Teleskopy</li>
+
+<li>Lornetki astronomiczne</li>
+
+<li>Aparaty do zdjęć nocnych</li>
+
+<li>Książki o kosmosie</li>
+
+</ul>
+
+
+<a class="btn"
+href="#">
+
+Zobacz polecany sprzęt
+
 </a>
 
-</div>
-
-
-<div class="ad">
-
-MIEJSCE NA REKLAMĘ GOOGLE ADSENSE
 
 </div>
-
-
-<h2>📩 Newsletter kosmiczny</h2>
-
-<p>
-Dostawaj informacje o zorzach i ciekawostkach astronomicznych.
-</p>
-
-<input placeholder="Twój email">
-<button>Zapisz się</button>
 
 
 </section>
 
 
+
+
+<section>
+
+
+<h2 class="title">
+📩 Kosmiczny alert
+</h2>
+
+
+<p>
+Zapisz się i dostawaj informacje o wyjątkowych zorzach.
+</p>
+
+
+<input placeholder="Twój email">
+
+<button>
+Dołącz
+</button>
+
+
+</section>
+
+
+
+
+<section>
+
+
+<h2 class="title">
+💰 Strefa twórcy
+</h2>
+
+
+<div class="card">
+
+<p>
+
+Ta strona może zarabiać przez:
+<br><br>
+
+✔ reklamy<br>
+✔ afiliację sprzętu astronomicznego<br>
+✔ płatne alerty zorzy<br>
+✔ kurs fotografii nocnej<br>
+✔ YouTube
+
+</p>
+
+
+</div>
+
+
+</section>
+
+
+
 <footer>
-© 2026 Kosmos i Zorza
+
+🌌 Aurora Universe 2026
+
 </footer>
 
 
 </body>
+
 </html>
